@@ -39,27 +39,29 @@ const ScheduleRacesUpcomingScreen = () => {
                                 let dateDebut = new Date(item?.FirstPractice?.date);
                                 let dateFin = new Date(item?.date);
 
-                                return (
-                                    <View key={index} style={styles.oneBox}>
-                                        <View style={styles.roundContainer}>
-                                            <Text style={styles.roundText}>ROUND</Text>
-                                            <Text style={styles.roundNumber}>{item?.round}</Text>
-                                            <Text></Text>
-                                        </View>
-                                        <View style={styles.bar}></View>
-                                        <Image source={flags[item?.Circuit?.Location?.country]} style={styles.flag} />
-                                        <Text style={styles.raceName}>{item?.raceName.toUpperCase()}</Text>
-                                        <View style={styles.bar}></View>
-                                        <View style={styles.dates}>
-                                            <View style={styles.datesNumbers}>
-                                                <Text style={styles.dateNumber}>{dateDebut.getDate() < 10 ? '0' + dateDebut.getDate() : dateDebut.getDate()}</Text>
-                                                <Text> - </Text>
-                                                <Text style={styles.dateNumber}>{dateFin.getDate() < 10 ? '0' + dateFin.getDate() : dateFin.getDate()}</Text>
+                                if(dateFin >= new Date()){
+                                    return (
+                                        <View key={index} style={styles.oneBox}>
+                                            <View style={styles.roundContainer}>
+                                                <Text style={styles.roundText}>ROUND</Text>
+                                                <Text style={styles.roundNumber}>{item?.round}</Text>
+                                                <Text></Text>
                                             </View>
-                                            <Text style={styles.datesMonth}>{(dateDebut.getMonth() === dateFin.getMonth())? dateFin.toLocaleDateString('en-GB', {month: 'short'}) : dateDebut.toLocaleDateString('en-GB', {month: 'short'}) + ' - ' + dateFin.toLocaleDateString('en-GB', {month: 'short'})}</Text>
+                                            <View style={styles.bar}></View>
+                                            <Image source={flags[item?.Circuit?.Location?.country]} style={styles.flag} />
+                                            <Text style={styles.raceName}>{item?.raceName.toUpperCase()}</Text>
+                                            <View style={styles.bar}></View>
+                                            <View style={styles.dates}>
+                                                <View style={styles.datesNumbers}>
+                                                    <Text style={styles.dateNumber}>{dateDebut.getDate() < 10 ? '0' + dateDebut.getDate() : dateDebut.getDate()}</Text>
+                                                    <Text> - </Text>
+                                                    <Text style={styles.dateNumber}>{dateFin.getDate() < 10 ? '0' + dateFin.getDate() : dateFin.getDate()}</Text>
+                                                </View>
+                                                <Text style={styles.datesMonth}>{(dateDebut.getMonth() === dateFin.getMonth())? dateFin.toLocaleDateString('en-GB', {month: 'short'}) : dateDebut.toLocaleDateString('en-GB', {month: 'short'}) + ' - ' + dateFin.toLocaleDateString('en-GB', {month: 'short'})}</Text>
+                                            </View>
                                         </View>
-                                    </View>
-                                );
+                                    );
+                                }
                             })
                         }
                     </ScrollView>
