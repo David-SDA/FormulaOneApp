@@ -44,8 +44,8 @@ const App = () => {
                     },
                   })}
             >
-                <Tab.Screen name='STANDINGS' component={StandingsScreen} />
                 <Tab.Screen name='SCHEDULE' component={ScheduleRacesScreen} />
+                <Tab.Screen name='STANDINGS' component={StandingsScreen} />
             </Tab.Navigator>
         </NavigationContainer>
     );

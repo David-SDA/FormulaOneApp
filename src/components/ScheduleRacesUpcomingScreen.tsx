@@ -1,5 +1,6 @@
-import { ActivityIndicator, ScrollView, StyleSheet, Text, View } from 'react-native'
-import React, { useEffect, useState } from 'react'
+import { ActivityIndicator, Image, ScrollView, StyleSheet, Text, View } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { flags } from '../../constants';
 
 const ScheduleRacesUpcomingScreen = () => {
     const [isLoading, setIsLoading] = useState(true);
@@ -37,18 +38,23 @@ const ScheduleRacesUpcomingScreen = () => {
                             scheduleRaces.map((item, index) => {
                                 let dateDebut = new Date(item?.FirstPractice?.date);
                                 let dateFin = new Date(item?.date);
+
                                 return (
                                     <View key={index} style={styles.oneBox}>
                                         <View style={styles.roundContainer}>
-                                            <Text style={{fontWeight: '900'}}>ROUND</Text>
-                                            <Text style={{fontWeight: 'bold'}}>{item?.round}</Text>
+                                            <Text style={styles.roundText}>ROUND</Text>
+                                            <Text style={styles.roundNumber}>{item?.round}</Text>
+                                            <Text></Text>
                                         </View>
-                                        <Text>{item?.raceName}</Text>
+                                        <View style={styles.bar}></View>
+                                        <Image source={flags[item?.Circuit?.Location?.country]} style={styles.flag} />
+                                        <Text style={styles.raceName}>{item?.raceName.toUpperCase()}</Text>
+                                        <View style={styles.bar}></View>
                                         <View style={styles.dates}>
                                             <View style={styles.datesNumbers}>
-                                                <Text>{dateDebut.getDate() < 10 ? '0' + dateDebut.getDate() : dateDebut.getDate()}</Text>
+                                                <Text style={styles.dateNumber}>{dateDebut.getDate() < 10 ? '0' + dateDebut.getDate() : dateDebut.getDate()}</Text>
                                                 <Text> - </Text>
-                                                <Text>{dateFin.getDate() < 10 ? '0' + dateFin.getDate() : dateFin.getDate()}</Text>
+                                                <Text style={styles.dateNumber}>{dateFin.getDate() < 10 ? '0' + dateFin.getDate() : dateFin.getDate()}</Text>
                                             </View>
                                             <Text style={styles.datesMonth}>{(dateDebut.getMonth() === dateFin.getMonth())? dateFin.toLocaleDateString('en-GB', {month: 'short'}) : dateDebut.toLocaleDateString('en-GB', {month: 'short'}) + ' - ' + dateFin.toLocaleDateString('en-GB', {month: 'short'})}</Text>
                                         </View>
@@ -71,33 +77,62 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-around',
         marginVertical: 5,
-        height: 70
+        height: 70,
+        borderRadius: 10,
     },
     roundContainer:{
-        borderColor: '#000000',
-        borderWidth: 1,
         flexDirection: 'column',
-        justifyContent: 'center',
+        justifyContent: 'space-between',
         alignItems: 'center',
+        width: '20%',
+    },
+    roundText:{
+        fontWeight: '900',
+        letterSpacing: 0.5,
+        color: '#708090',
+    },
+    roundNumber:{
+        fontWeight: 'bold',
+        fontSize: 20,
+    },
+    bar:{
+        width: 1,
+        height: 60,
+        borderRadius: 10,
+        backgroundColor: 'gray',
+        alignSelf: 'center'
+    },
+    flag:{
+        height: 30,
+        width: 40,
+        resizeMode: 'contain',
+        alignSelf: 'center',
+    },
+    raceName:{
+        width: '40%',
+        textAlign: 'center',
+        textAlignVertical: 'center',
+        fontWeight: '900',
     },
     dates:{
-        borderColor: '#000000',
-        borderWidth: 1,
         flexDirection: 'column',
         justifyContent: 'space-around',
         alignItems: 'center',
+        width: '20%',
     },
     datesNumbers:{
-        borderColor: '#000000',
-        borderWidth: 1,
         flexDirection: 'row',
+    },
+    dateNumber:{
+        fontSize: 16,
+        fontWeight: 'bold'
     },
     datesMonth:{
         backgroundColor: '#E5E4E2',
         color: '#708090',
-        padding: 6,
+        padding: 4,
         borderRadius: 20,
-        fontSize: 12,
+        fontSize: 10,
         fontWeight: '900',
     }
 })
