@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
     },
     position:{
         fontSize: 20,
-        color: '#393646',
+        color: '#1e1e1e',
         fontWeight: '900',
     },
     teamColorBar:{
@@ -134,26 +134,10 @@ const styles = StyleSheet.create({
         height: 60,
         borderRadius: 10,
     },
-    driverTeam:{
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        width: '55%',
-        height: '90%',
-    },
-    driverName:{
-        fontSize: 20,
-        fontWeight: 'bold',
-        letterSpacing: 0.4,
-        color: '#393646'
-    },
-    team:{
-        fontStyle: 'italic',
-        color: 'gray',
-    },
     points:{
         fontSize: 16,
         fontWeight: 'bold',
-        color: '#393646',
+        color: '#1e1e1e',
         padding: 6,
         borderRadius: 20,
         backgroundColor: '#E5E4E2'
@@ -163,5 +147,6 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontSize: 20,
         fontWeight: 'bold',
+        color: '#1e1e1e',
     },
 })

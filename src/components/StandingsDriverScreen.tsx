@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
     },
     position:{
         fontSize: 20,
-        color: '#393646',
+        color: '#1e1e1e',
         fontWeight: '900',
     },
     teamColorBar:{
@@ -134,7 +134,7 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: 'bold',
         letterSpacing: 0.4,
-        color: '#393646'
+        color: '#1e1e1e',
     },
     team:{
         fontStyle: 'italic',
@@ -143,7 +143,7 @@ const styles = StyleSheet.create({
     points:{
         fontSize: 16,
         fontWeight: 'bold',
-        color: '#393646',
+        color: '#1e1e1e',
         padding: 6,
         borderRadius: 20,
         backgroundColor: '#E5E4E2'

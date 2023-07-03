@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
     roundText:{
         fontWeight: '900',
         letterSpacing: 0.5,
-        color: '#708090',
+        color: '#1e1e1e',
     },
     roundNumber:{
         fontWeight: 'bold',
@@ -115,6 +115,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         textAlignVertical: 'center',
         fontWeight: '900',
+        color: '#1e1e1e',
     },
     dates:{
         flexDirection: 'column',
@@ -127,7 +128,8 @@ const styles = StyleSheet.create({
     },
     dateNumber:{
         fontSize: 16,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        color: '#1e1e1e',
     },
     datesMonth:{
         backgroundColor: '#E5E4E2',

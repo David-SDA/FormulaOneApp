@@ -96,6 +96,7 @@ const styles = StyleSheet.create({
     roundNumber:{
         fontWeight: 'bold',
         fontSize: 20,
+        color: '#1e1e1e',
     },
     bar:{
         width: 1,
@@ -115,6 +116,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         textAlignVertical: 'center',
         fontWeight: '900',
+        color: '#1e1e1e',
     },
     dates:{
         flexDirection: 'column',
@@ -127,7 +129,8 @@ const styles = StyleSheet.create({
     },
     dateNumber:{
         fontSize: 16,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        color: '#1e1e1e',
     },
     datesMonth:{
         backgroundColor: '#E5E4E2',
