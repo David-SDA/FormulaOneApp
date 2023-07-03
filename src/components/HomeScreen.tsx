@@ -34,6 +34,9 @@ const HomeScreen = () => {
                     </View>
                 ):(
                     <ScrollView contentContainerStyle={{paddingHorizontal: 10}}>
+                        <View>
+                            <Text style={styles.titleHome}>Next Race Weekend</Text>
+                        </View>
                         {
                             nextRace.map((item, index) => {
                                 let dateDebut = new Date(item?.FirstPractice?.date);
@@ -41,24 +44,12 @@ const HomeScreen = () => {
 
                                 if(dateFin >= new Date()){
                                     return (
-                                        <View key={index} style={styles.oneBox}>
+                                        <View key={index} style={styles.container}>
                                             <View style={styles.roundContainer}>
-                                                <Text style={styles.roundText}>ROUND</Text>
-                                                <Text style={styles.roundNumber}>{item?.round}</Text>
-                                                <Text></Text>
+                                                    <Image source={flags[item?.Circuit?.Location?.country]} style={styles.flag} />
+                                                    <Text style={styles.raceName}>{item?.raceName.toUpperCase()}</Text>
                                             </View>
-                                            <View style={styles.bar}></View>
-                                            <Image source={flags[item?.Circuit?.Location?.country]} style={styles.flag} />
-                                            <Text style={styles.raceName}>{item?.raceName.toUpperCase()}</Text>
-                                            <View style={styles.bar}></View>
-                                            <View style={styles.dates}>
-                                                <View style={styles.datesNumbers}>
-                                                    <Text style={styles.dateNumber}>{dateDebut.getDate() < 10 ? '0' + dateDebut.getDate() : dateDebut.getDate()}</Text>
-                                                    <Text> - </Text>
-                                                    <Text style={styles.dateNumber}>{dateFin.getDate() < 10 ? '0' + dateFin.getDate() : dateFin.getDate()}</Text>
-                                                </View>
-                                                <Text style={styles.datesMonth}>{(dateDebut.getMonth() === dateFin.getMonth())? dateFin.toLocaleDateString('en-GB', {month: 'short'}) : dateDebut.toLocaleDateString('en-GB', {month: 'short'}) + ' - ' + dateFin.toLocaleDateString('en-GB', {month: 'short'})}</Text>
-                                            </View>
+
                                         </View>
                                     );
                                 }
@@ -74,67 +65,39 @@ const HomeScreen = () => {
 export default HomeScreen;
 
 const styles = StyleSheet.create({
-    oneBox:{
+    titleHome:{
+        color: '#ffffff',
+        fontSize: 20,
+        fontWeight: 'bold',
+        fontStyle: 'italic',
+        alignSelf: 'center',
+    },
+    container:{
         backgroundColor: '#ffffff',
-        flexDirection: 'row',
+        flexDirection: 'column',
+        alignItems: 'center',
         justifyContent: 'space-around',
         marginVertical: 5,
-        height: 70,
         borderRadius: 10,
     },
     roundContainer:{
-        flexDirection: 'column',
-        justifyContent: 'space-between',
+        flexDirection: 'row',
+        justifyContent: 'space-around',
         alignItems: 'center',
-        width: '20%',
-    },
-    roundText:{
-        fontWeight: '900',
-        letterSpacing: 0.5,
-        color: '#708090',
-    },
-    roundNumber:{
-        fontWeight: 'bold',
-        fontSize: 20,
-    },
-    bar:{
-        width: 1,
-        height: 60,
-        borderRadius: 10,
-        backgroundColor: 'gray',
-        alignSelf: 'center'
+        width: '95%',
+        marginTop: 5,
     },
     flag:{
-        height: 30,
-        width: 40,
+        height: 40,
+        width: 60,
         resizeMode: 'contain',
         alignSelf: 'center',
     },
     raceName:{
-        width: '40%',
         textAlign: 'center',
         textAlignVertical: 'center',
         fontWeight: '900',
+        fontSize: 20,
+        width: '80%',
     },
-    dates:{
-        flexDirection: 'column',
-        justifyContent: 'space-around',
-        alignItems: 'center',
-        width: '20%',
-    },
-    datesNumbers:{
-        flexDirection: 'row',
-    },
-    dateNumber:{
-        fontSize: 16,
-        fontWeight: 'bold'
-    },
-    datesMonth:{
-        backgroundColor: '#E5E4E2',
-        color: '#708090',
-        padding: 4,
-        borderRadius: 20,
-        fontSize: 10,
-        fontWeight: '900',
-    }
 })

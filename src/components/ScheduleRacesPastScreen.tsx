@@ -35,7 +35,7 @@ const ScheduleRacesPastScreen = () => {
                 ):(
                     <ScrollView contentContainerStyle={{paddingHorizontal: 10}}>
                         {
-                            scheduleRaces.map((item, index) => {
+                            scheduleRaces.reverse().map((item, index) => {
                                 let dateDebut = new Date(item?.FirstPractice?.date);
                                 let dateFin = new Date(item?.date);
 
