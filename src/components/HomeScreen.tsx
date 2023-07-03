@@ -1,6 +1,6 @@
 import { ActivityIndicator, Image, ScrollView, StyleSheet, Text, View } from 'react-native';
 import React, { useEffect, useState } from 'react';
-import { flags } from '../../constants';
+import { flags } from '../../constants/flags';
 import { Shadow } from 'react-native-shadow-2';
 
 const HomeScreen = () => {

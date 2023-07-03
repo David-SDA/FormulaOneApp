@@ -1,12 +1,29 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import { StyleSheet } from 'react-native';
+import React from 'react';
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import HistoryDriversChampions from './historyChampions/historyDriversChampions/HistoryDriversChampionsScreen';
+
+const Tab = createMaterialTopTabNavigator();
 
 const HistoryScreen = () => {
-  return (
-    <View>
-      <Text>HistoryScreen</Text>
-    </View>
-  )
+    return (
+        <Tab.Navigator
+                screenOptions={{
+                    tabBarStyle:{
+                        backgroundColor: '#ff1801',
+                    },
+                    tabBarActiveTintColor: '#ffffff',
+                    tabBarLabelStyle:{
+                        fontWeight: 'bold',
+                    },
+                    tabBarIndicatorStyle:{
+                        backgroundColor: '#ffffff'
+                    }
+                }}
+            >
+                <Tab.Screen name='DRIVERS' component={HistoryDriversChampions} />
+            </Tab.Navigator>
+      )
 }
 
 export default HistoryScreen

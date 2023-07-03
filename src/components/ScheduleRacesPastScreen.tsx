@@ -1,6 +1,6 @@
 import { ActivityIndicator, Image, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import React, { useEffect, useState } from 'react';
-import { flags } from '../../constants';
+import { flags } from '../../constants/flags';
 
 const ScheduleRacesPastScreen = () => {
     const [isLoading, setIsLoading] = useState(true);
