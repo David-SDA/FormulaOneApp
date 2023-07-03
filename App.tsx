@@ -8,6 +8,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import StandingsScreen from './src/components/StandingsScreen';
 import ScheduleRacesScreen from './src/components/ScheduleRacesScreen';
 import HomeScreen from './src/components/HomeScreen';
+import HistoryScreen from './src/components/HistoryScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -52,6 +53,7 @@ const App = () => {
                 <Tab.Screen name='HOME' component={HomeScreen} />
                 <Tab.Screen name='SCHEDULE' component={ScheduleRacesScreen} />
                 <Tab.Screen name='STANDINGS' component={StandingsScreen} />
+                <Tab.Screen name='HISTORY' component={HistoryScreen} />
             </Tab.Navigator>
         </NavigationContainer>
     );

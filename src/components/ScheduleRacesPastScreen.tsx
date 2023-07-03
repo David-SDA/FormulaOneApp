@@ -1,4 +1,4 @@
-import { ActivityIndicator, Image, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { ActivityIndicator, Image, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { flags } from '../../constants';
 
@@ -41,7 +41,7 @@ const ScheduleRacesPastScreen = () => {
 
                                 if(dateFin < new Date()){
                                     return (
-                                        <View key={index} style={styles.oneBox}>
+                                        <Pressable key={index} style={styles.oneBox}>
                                             <View style={styles.roundContainer}>
                                                 <Text style={styles.roundText}>ROUND</Text>
                                                 <Text style={styles.roundNumber}>{item?.round}</Text>
@@ -59,7 +59,7 @@ const ScheduleRacesPastScreen = () => {
                                                 </View>
                                                 <Text style={styles.datesMonth}>{(dateDebut.getMonth() === dateFin.getMonth())? dateFin.toLocaleDateString('en-GB', {month: 'short'}) : dateDebut.toLocaleDateString('en-GB', {month: 'short'}) + ' - ' + dateFin.toLocaleDateString('en-GB', {month: 'short'})}</Text>
                                             </View>
-                                        </View>
+                                        </Pressable>
                                     );
                                 }
                             })
@@ -78,6 +78,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#ffffff',
         flexDirection: 'row',
         justifyContent: 'space-around',
+        alignItems: 'center',
         marginVertical: 5,
         height: 70,
         borderRadius: 10,
