@@ -46,6 +46,8 @@ const HomeScreen = () => {
                                 let dateRace = new Date(item?.date + 'T' + item?.time);
 
                                 if(dateRace >= new Date() && item?.ThirdPractice){
+                                    let dateFP3 = new Date(item?.ThirdPractice?.date + 'T' + item?.ThirdPractice?.time);
+
                                     return (
                                         <View key={index} style={styles.container}>
                                             <View style={styles.roundContainer}>
@@ -67,21 +69,63 @@ const HomeScreen = () => {
                                                 </Shadow>
                                             </View>
                                             <View style={styles.sessionBox}>
-                                                <Text style={styles.sessionTitle}>QUALIFYING</Text>
+                                                <Shadow distance={5} startColor='#00000010' style={styles.sessionBoxShadow}>
+                                                    <View style={styles.sessionDate}>
+                                                        <Text style={styles.sessionDay}>{dateQuali.toLocaleDateString('en-GB', {day: '2-digit'})}</Text>
+                                                        <Text style={styles.sessionMonth}>{dateQuali.toLocaleDateString('en-GB', {month: 'short'})}</Text>
+                                                    </View>
+                                                    <View style={styles.verticalBar}></View>
+                                                    <View style={styles.sessionTitleTime}>
+                                                        <Text style={styles.sessionTitle}>QUALIFYING</Text>
+                                                        <Text style={styles.sessionHour}>{dateQuali.toLocaleTimeString('en-GB', {hour: '2-digit', minute: '2-digit'})}</Text>
+                                                    </View>
+                                                </Shadow>
                                             </View>
                                             <View style={styles.sessionBox}>
-                                                <Text style={styles.sessionTitle}>FREE PRACTICE 3</Text>
+                                                <Shadow distance={5} startColor='#00000010' style={styles.sessionBoxShadow}>
+                                                    <View style={styles.sessionDate}>
+                                                        <Text style={styles.sessionDay}>{dateFP3.toLocaleDateString('en-GB', {day: '2-digit'})}</Text>
+                                                        <Text style={styles.sessionMonth}>{dateFP3.toLocaleDateString('en-GB', {month: 'short'})}</Text>
+                                                    </View>
+                                                    <View style={styles.verticalBar}></View>
+                                                    <View style={styles.sessionTitleTime}>
+                                                        <Text style={styles.sessionTitle}>FREE PRACTICE 3</Text>
+                                                        <Text style={styles.sessionHour}>{dateFP3.toLocaleTimeString('en-GB', {hour: '2-digit', minute: '2-digit'})}</Text>
+                                                    </View>
+                                                </Shadow>
                                             </View>
                                             <View style={styles.sessionBox}>
-                                                <Text style={styles.sessionTitle}>FREE PRACTICE 2</Text>
+                                                <Shadow distance={5} startColor='#00000010' style={styles.sessionBoxShadow}>
+                                                    <View style={styles.sessionDate}>
+                                                        <Text style={styles.sessionDay}>{dateFP2.toLocaleDateString('en-GB', {day: '2-digit'})}</Text>
+                                                        <Text style={styles.sessionMonth}>{dateFP2.toLocaleDateString('en-GB', {month: 'short'})}</Text>
+                                                    </View>
+                                                    <View style={styles.verticalBar}></View>
+                                                    <View style={styles.sessionTitleTime}>
+                                                        <Text style={styles.sessionTitle}>FREE PRACTICE 2</Text>
+                                                        <Text style={styles.sessionHour}>{dateFP2.toLocaleTimeString('en-GB', {hour: '2-digit', minute: '2-digit'})}</Text>
+                                                    </View>
+                                                </Shadow>
                                             </View>
                                             <View style={styles.sessionBox}>
-                                                <Text style={styles.sessionTitle}>FREE PRACTICE 1</Text>
+                                                <Shadow distance={5} startColor='#00000010' style={styles.sessionBoxShadow}>
+                                                    <View style={styles.sessionDate}>
+                                                        <Text style={styles.sessionDay}>{dateFP1.toLocaleDateString('en-GB', {day: '2-digit'})}</Text>
+                                                        <Text style={styles.sessionMonth}>{dateFP1.toLocaleDateString('en-GB', {month: 'short'})}</Text>
+                                                    </View>
+                                                    <View style={styles.verticalBar}></View>
+                                                    <View style={styles.sessionTitleTime}>
+                                                        <Text style={styles.sessionTitle}>FREE PRACTICE 1</Text>
+                                                        <Text style={styles.sessionHour}>{dateFP1.toLocaleTimeString('en-GB', {hour: '2-digit', minute: '2-digit'})}</Text>
+                                                    </View>
+                                                </Shadow>
                                             </View>
                                         </View>
                                     );
                                 }
                                 else{
+                                    let dateSprint = new Date(item?.Sprint.date + 'T' + item?.Sprint.time);
+
                                     return (
                                         <View key={index} style={styles.container}>
                                             <View style={styles.roundContainer}>
@@ -91,23 +135,68 @@ const HomeScreen = () => {
                                             <Text style={styles.scheduleTitleText}>SCHEDULE</Text>
                                             <View style={styles.sessionBox}>
                                                 <Shadow distance={5} startColor='#00000010' style={styles.sessionBoxShadow}>
-                                                    <Text style={styles.sessionTitle}>RACE</Text>
-                                                    <Text>{dateRace.toLocaleDateString('en-GB', {day: '2-digit'})}</Text>
-                                                    <Text>{dateRace.toLocaleDateString('en-GB', {month: 'short'})}</Text>
-                                                    <Text>{dateRace.toLocaleTimeString('en-GB', {hour: '2-digit', minute: '2-digit'})}</Text>
+                                                    <View style={styles.sessionDate}>
+                                                        <Text style={styles.sessionDay}>{dateRace.toLocaleDateString('en-GB', {day: '2-digit'})}</Text>
+                                                        <Text style={styles.sessionMonth}>{dateRace.toLocaleDateString('en-GB', {month: 'short'})}</Text>
+                                                    </View>
+                                                    <View style={styles.verticalBar}></View>
+                                                    <View style={styles.sessionTitleTime}>
+                                                        <Text style={styles.sessionTitle}>RACE</Text>
+                                                        <Text style={styles.sessionHour}>{dateRace.toLocaleTimeString('en-GB', {hour: '2-digit', minute: '2-digit'})}</Text>
+                                                    </View>
                                                 </Shadow>
                                             </View>
                                             <View style={styles.sessionBox}>
-                                                <Text style={styles.sessionTitle}>SPRINT</Text>
+                                                <Shadow distance={5} startColor='#00000010' style={styles.sessionBoxShadow}>
+                                                    <View style={styles.sessionDate}>
+                                                        <Text style={styles.sessionDay}>{dateSprint.toLocaleDateString('en-GB', {day: '2-digit'})}</Text>
+                                                        <Text style={styles.sessionMonth}>{dateSprint.toLocaleDateString('en-GB', {month: 'short'})}</Text>
+                                                    </View>
+                                                    <View style={styles.verticalBar}></View>
+                                                    <View style={styles.sessionTitleTime}>
+                                                        <Text style={styles.sessionTitle}>SPRINT</Text>
+                                                        <Text style={styles.sessionHour}>{dateSprint.toLocaleTimeString('en-GB', {hour: '2-digit', minute: '2-digit'})}</Text>
+                                                    </View>
+                                                </Shadow>
                                             </View>
                                             <View style={styles.sessionBox}>
-                                                <Text style={styles.sessionTitle}>FREE PRACTICE 2</Text>
+                                                <Shadow distance={5} startColor='#00000010' style={styles.sessionBoxShadow}>
+                                                    <View style={styles.sessionDate}>
+                                                        <Text style={styles.sessionDay}>{dateFP2.toLocaleDateString('en-GB', {day: '2-digit'})}</Text>
+                                                        <Text style={styles.sessionMonth}>{dateFP2.toLocaleDateString('en-GB', {month: 'short'})}</Text>
+                                                    </View>
+                                                    <View style={styles.verticalBar}></View>
+                                                    <View style={styles.sessionTitleTime}>
+                                                        <Text style={styles.sessionTitle}>FREE PRACTICE 2</Text>
+                                                        <Text style={styles.sessionHour}>{dateFP2.toLocaleTimeString('en-GB', {hour: '2-digit', minute: '2-digit'})}</Text>
+                                                    </View>
+                                                </Shadow>
                                             </View>
                                             <View style={styles.sessionBox}>
-                                                <Text style={styles.sessionTitle}>QUALIFYING</Text>
+                                                <Shadow distance={5} startColor='#00000010' style={styles.sessionBoxShadow}>
+                                                    <View style={styles.sessionDate}>
+                                                        <Text style={styles.sessionDay}>{dateQuali.toLocaleDateString('en-GB', {day: '2-digit'})}</Text>
+                                                        <Text style={styles.sessionMonth}>{dateQuali.toLocaleDateString('en-GB', {month: 'short'})}</Text>
+                                                    </View>
+                                                    <View style={styles.verticalBar}></View>
+                                                    <View style={styles.sessionTitleTime}>
+                                                        <Text style={styles.sessionTitle}>QUALIFYING</Text>
+                                                        <Text style={styles.sessionHour}>{dateQuali.toLocaleTimeString('en-GB', {hour: '2-digit', minute: '2-digit'})}</Text>
+                                                    </View>
+                                                </Shadow>
                                             </View>
                                             <View style={styles.sessionBox}>
-                                                <Text style={styles.sessionTitle}>FREE PRACTICE 1</Text>
+                                                <Shadow distance={5} startColor='#00000010' style={styles.sessionBoxShadow}>
+                                                    <View style={styles.sessionDate}>
+                                                        <Text style={styles.sessionDay}>{dateFP1.toLocaleDateString('en-GB', {day: '2-digit'})}</Text>
+                                                        <Text style={styles.sessionMonth}>{dateFP1.toLocaleDateString('en-GB', {month: 'short'})}</Text>
+                                                    </View>
+                                                    <View style={styles.verticalBar}></View>
+                                                    <View style={styles.sessionTitleTime}>
+                                                        <Text style={styles.sessionTitle}>FREE PRACTICE 1</Text>
+                                                        <Text style={styles.sessionHour}>{dateFP1.toLocaleTimeString('en-GB', {hour: '2-digit', minute: '2-digit'})}</Text>
+                                                    </View>
+                                                </Shadow>
                                             </View>
                                         </View>
                                     );
