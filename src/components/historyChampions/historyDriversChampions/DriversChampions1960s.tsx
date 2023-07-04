@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
     driverImage:{
         height: 65,
         width: 65,
-        resizeMode: 'contain',
+        resizeMode: 'cover',
         borderRadius: 65,
     }
 })
