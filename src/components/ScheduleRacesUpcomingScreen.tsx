@@ -1,10 +1,12 @@
 import { ActivityIndicator, Image, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import React, { useEffect, useState } from 'react';
+import Modal from 'react-native-modal';
 import { flags } from '../../constants/flags';
 
 const ScheduleRacesUpcomingScreen = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [scheduleRaces, setScheduleRaces] = useState([]);
+    const [modalVisible, setModalVisible] = useState(false);
 
     const getData = async () => {
         const url = 'http://ergast.com/api/f1/current.json';
@@ -41,7 +43,28 @@ const ScheduleRacesUpcomingScreen = () => {
 
                                 if(dateFin >= new Date()){
                                     return (
-                                        <Pressable key={index} style={styles.oneBox}>
+                                        <Pressable key={index} style={styles.oneBox} onPress={() => {
+                                            setModalVisible(true);
+                                        }}>
+                                            <Modal
+                                                animationIn={'slideInLeft'}
+                                                animationOut={'slideOutRight'}
+                                                animationInTiming={1000}
+                                                animationOutTiming={1000}
+                                                backdropTransitionInTiming={1000}
+                                                backdropTransitionOutTiming={1000}
+                                                onBackdropPress={() => {
+                                                    setModalVisible(!modalVisible);
+                                                }}
+                                                onBackButtonPress={() => {
+                                                    setModalVisible(!modalVisible);
+                                                }}
+                                                isVisible={modalVisible}
+                                                backdropColor='#1e1e1e'>
+                                                <View>
+                                                    <Text>test</Text>
+                                                </View>
+                                            </Modal>
                                             <View style={styles.roundContainer}>
                                                 <Text style={styles.roundText}>ROUND</Text>
                                                 <Text style={styles.roundNumber}>{item?.round}</Text>
