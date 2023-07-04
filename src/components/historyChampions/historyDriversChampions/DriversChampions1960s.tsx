@@ -35,7 +35,7 @@ const DriversChampions1960s = () => {
                 ):(
                     <View>
                         {
-                            driversChampions.map((item, index) => {
+                            driversChampions.reverse().map((item, index) => {
                                 return (
                                     <View key={index} style={styles.oneBox}>
                                         <Text style={styles.season}>{item?.season}</Text>
