@@ -1,4 +1,4 @@
-export const flagsDrivers = {
+export const flagsNationality = {
     'British': require('../assets/countryFlags/uk.jpg'),
     'German': require('../assets/countryFlags/germany.jpg'),
     'Brazilian': require('../assets/countryFlags/brazil.jpg'),
