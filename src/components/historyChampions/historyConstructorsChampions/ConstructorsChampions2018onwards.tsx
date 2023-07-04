@@ -1,6 +1,7 @@
 import { ActivityIndicator, Image, StyleSheet, Text, View } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { flagsNationality } from '../../../../constants/flagsNationality';
+import { constructorsImages } from '../../../../constants/constructorImage';
 
 const ConstructorsChampions2018onwards = () => {
   	const [isLoading, setIsLoading] = useState(true);
@@ -45,7 +46,7 @@ const ConstructorsChampions2018onwards = () => {
                                                 <Text style={styles.name}>{item?.ConstructorStandings[0]?.Constructor?.name}</Text>
                                                 <Text style={styles.winText}><Text style={styles.winNumber}>{item?.ConstructorStandings[0]?.wins}</Text> wins</Text>
                                             </View>
-                                            {/* <Image source={driverImage[item?.DriverStandings[0]?.Driver?.driverId]} style={styles.driverImage} /> */}
+                                            <Image source={constructorsImages[item?.ConstructorStandings[0]?.Constructor?.constructorId]} style={styles.teamImage} />
                                         </View>
 									</View>
 								);
@@ -107,10 +108,6 @@ const styles = StyleSheet.create({
         fontSize: 18,
 		fontWeight: 'bold',
     },
-    familyName:{
-        color: '#1e1e1e',
-        fontWeight: 'bold',
-    },
     team:{
         fontStyle: 'italic',
         fontSize: 12,
@@ -124,10 +121,9 @@ const styles = StyleSheet.create({
         color: '#1e1e1e',
         fontStyle: 'italic',
     },
-    driverImage:{
-        height: 65,
-        width: 65,
-        resizeMode: 'cover',
-        borderRadius: 65,
+    teamImage:{
+        height: 50,
+        width: 50,
+        resizeMode: 'contain',
     }
 })

@@ -22,8 +22,8 @@ const HistoryScreen = () => {
                     }
                 }}
             >
-                <Tab.Screen name='CONSTRUCTORS' component={HistoryConstructorChampionsScreen} />
                 <Tab.Screen name='DRIVERS' component={HistoryDriversChampions} />
+                <Tab.Screen name='CONSTRUCTORS' component={HistoryConstructorChampionsScreen} />
             </Tab.Navigator>
       )
 }
