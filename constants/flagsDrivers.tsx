@@ -1,0 +1,17 @@
+export const flagsDrivers = {
+    'British': require('../assets/countryFlags/uk.jpg'),
+    'German': require('../assets/countryFlags/germany.jpg'),
+    'Brazilian': require('../assets/countryFlags/brazil.jpg'),
+    'Argentine': require('../assets/countryFlags/argentina.jpg'),
+    'Finnish': require('../assets/countryFlags/finland.jpg'),
+    'Australian': require('../assets/countryFlags/australia.jpg'),
+    'Austrian': require('../assets/countryFlags/austria.jpg'),
+    'French': require('../assets/countryFlags/france.png'),
+    'Italian': require('../assets/countryFlags/italy.jpg'),
+    'American': require('../assets/countryFlags/usa.jpg'),
+    'Spanish': require('../assets/countryFlags/spain.jpg'),
+    'Dutch': require('../assets/countryFlags/netherlands.jpg'),
+    'New Zealander': require('../assets/countryFlags/newZealand.jpg'),
+    'South African': require('../assets/countryFlags/southAfrica.jpg'),
+    'Canadian': require('../assets/countryFlags/canada.jpg'),
+}

@@ -1,6 +1,7 @@
 import { ActivityIndicator, Image, StyleSheet, Text, View } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { driverImage } from '../../../../constants/driverImage';
+import { flagsDrivers } from '../../../../constants/flagsDrivers';
 
 const DriversChampions2010s = () => {
     const [isLoading, setIsLoading] = useState(true);
@@ -40,6 +41,7 @@ const DriversChampions2010s = () => {
                                     <View key={index} style={styles.oneBox}>
                                         <Text style={styles.season}>{item?.season}</Text>
                                         <View style={styles.verticalBar}></View>
+                                        <Image source={flagsDrivers[item?.DriverStandings[0]?.Driver?.nationality]} style={styles.flag} />
                                         <View style={styles.nameWinImage}>
                                             <View style={styles.nameWin}>
                                                 <Text style={styles.firstName}>{item?.DriverStandings[0]?.Driver?.givenName} <Text style={styles.familyName}>{item?.DriverStandings[0]?.Driver?.familyName}</Text></Text>
@@ -82,13 +84,20 @@ const styles = StyleSheet.create({
         width: 2, 
         backgroundColor: 'lightgray',
         borderRadius: 20,
-        marginRight: 10,
+        marginRight: 5,
+    },
+    flag:{
+        height: 30,
+        width: 40,
+        resizeMode: 'contain',
+        alignSelf: 'center',
     },
     nameWinImage:{
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        width: '75%',
+        width: '60%',
+        marginLeft: 10,
     },
     nameWin:{
         flexDirection: 'column',
