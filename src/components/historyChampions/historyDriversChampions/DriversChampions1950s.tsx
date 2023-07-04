@@ -43,6 +43,7 @@ const DriversChampions1950s = () => {
                                         <View style={styles.nameWinImage}>
                                             <View style={styles.nameWin}>
                                                 <Text style={styles.firstName}>{item?.DriverStandings[0]?.Driver?.givenName} <Text style={styles.familyName}>{item?.DriverStandings[0]?.Driver?.familyName}</Text></Text>
+                                                <Text style={styles.team}>{item?.DriverStandings[0]?.Constructors[0]?.name}</Text>
                                                 <Text style={styles.winText}><Text style={styles.winNumber}>{item?.DriverStandings[0]?.wins}</Text> wins</Text>
                                             </View>
                                             <Image source={driverImage[item?.DriverStandings[0]?.Driver?.driverId]} style={styles.driverImage} />
@@ -103,6 +104,10 @@ const styles = StyleSheet.create({
         color: '#1e1e1e',
         fontWeight: 'bold',
     },
+    team:{
+        fontStyle: 'italic',
+        fontSize: 12,
+    },
     winNumber:{
         color: '#1e1e1e',
         fontWeight: 'bold',
@@ -115,7 +120,7 @@ const styles = StyleSheet.create({
     driverImage:{
         height: 65,
         width: 65,
-        resizeMode: 'contain',
+        resizeMode: 'cover',
         borderRadius: 65,
     }
 })
