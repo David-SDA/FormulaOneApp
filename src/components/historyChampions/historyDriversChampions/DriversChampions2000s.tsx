@@ -1,6 +1,6 @@
 import { ActivityIndicator, Image, StyleSheet, Text, View } from 'react-native';
 import React, { useEffect, useState } from 'react';
-import { driverImage } from '../../../../constants/driverImage';
+import { driversImages } from '../../../../constants/driversImages';
 import { flagsNationality } from '../../../../constants/flagsNationality';
 
 const DriversChampions2000s = () => {
@@ -48,7 +48,7 @@ const DriversChampions2000s = () => {
                                                 <Text style={styles.team}>{item?.DriverStandings[0]?.Constructors[0]?.name}</Text>
                                                 <Text style={styles.winText}><Text style={styles.winNumber}>{item?.DriverStandings[0]?.wins}</Text> wins</Text>
                                             </View>
-                                            <Image source={driverImage[item?.DriverStandings[0]?.Driver?.driverId]} style={styles.driverImage} />
+                                            <Image source={driversImages[item?.DriverStandings[0]?.Driver?.driverId]} style={styles.driverImage} />
                                         </View>
                                     </View>
                                 );

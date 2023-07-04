@@ -1,4 +1,4 @@
-export const driverImage = {
+export const driversImages = {
     'farina': require('../assets/driversChampionsImages/farina.jpeg'),
     'fangio': require('../assets/driversChampionsImages/fangio.png'),
     'ascari': require('../assets/driversChampionsImages/ascari.jpeg'),
