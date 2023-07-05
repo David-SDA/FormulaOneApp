@@ -1,12 +1,26 @@
 import { ActivityIndicator, Image, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import Modal from 'react-native-modal';
+
 import { flags } from '../../../constants/flags';
+import ModalRace from '../ModalRace';
+
 
 const ScheduleRacesUpcomingScreen = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [scheduleRaces, setScheduleRaces] = useState([]);
     const [modalVisible, setModalVisible] = useState(false);
+    const [selectedRace, setSelectedRace] = useState(null);
+
+    const openModal = (race: any) => {
+        setSelectedRace(race);
+        setModalVisible(true);
+    }
+
+    const closeModal = () => {
+        setSelectedRace(null);
+        setModalVisible(false);
+    }
 
     const getData = async () => {
         const url = 'http://ergast.com/api/f1/current.json';
@@ -36,6 +50,17 @@ const ScheduleRacesUpcomingScreen = () => {
                     </View>
                 ):(
                     <ScrollView contentContainerStyle={{paddingHorizontal: 10}}>
+                        <Modal
+                            animationIn={'fadeIn'}
+                            animationOut={'fadeOut'}
+                            hideModalContentWhileAnimating
+                            onBackButtonPress={() => {
+                                closeModal();
+                            }}
+                            isVisible={modalVisible}
+                        >
+                            <ModalRace round={selectedRace?.round} />
+                        </Modal>
                         {
                             scheduleRaces.map((item, index) => {
                                 let dateDebut = new Date(item?.FirstPractice?.date);
@@ -44,21 +69,8 @@ const ScheduleRacesUpcomingScreen = () => {
                                 if(dateFin >= new Date()){
                                     return (
                                         <Pressable key={index} style={styles.oneBox} onPress={() => {
-                                            setModalVisible(true);
+                                            openModal(item);
                                         }}>
-                                            <Modal
-                                                animationIn={'fadeIn'}
-                                                animationOut={'fadeOut'}
-                                                hideModalContentWhileAnimating
-                                                onBackButtonPress={() => {
-                                                    setModalVisible(!modalVisible);
-                                                }}
-                                                isVisible={modalVisible}
-                                                >
-                                                <View style={{backgroundColor: 'white'}}>
-                                                    <Text>test</Text>
-                                                </View>
-                                            </Modal>
                                             <View style={styles.roundContainer}>
                                                 <Text style={styles.roundText}>ROUND</Text>
                                                 <Text style={styles.roundNumber}>{item?.round}</Text>
