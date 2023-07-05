@@ -1,12 +1,10 @@
 import { ActivityIndicator, Image, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import React, { useEffect, useState } from 'react';
-import Modal from 'react-native-modal';
-import { flags } from '../../constants/flags';
+import { flags } from '../../../constants/flags';
 
-const ScheduleRacesUpcomingScreen = () => {
+const ScheduleRacesPastScreen = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [scheduleRaces, setScheduleRaces] = useState([]);
-    const [modalVisible, setModalVisible] = useState(false);
 
     const getData = async () => {
         const url = 'http://ergast.com/api/f1/current.json';
@@ -37,34 +35,13 @@ const ScheduleRacesUpcomingScreen = () => {
                 ):(
                     <ScrollView contentContainerStyle={{paddingHorizontal: 10}}>
                         {
-                            scheduleRaces.map((item, index) => {
+                            scheduleRaces.reverse().map((item, index) => {
                                 let dateDebut = new Date(item?.FirstPractice?.date);
                                 let dateFin = new Date(item?.date);
 
-                                if(dateFin >= new Date()){
+                                if(dateFin < new Date()){
                                     return (
-                                        <Pressable key={index} style={styles.oneBox} onPress={() => {
-                                            setModalVisible(true);
-                                        }}>
-                                            <Modal
-                                                animationIn={'slideInLeft'}
-                                                animationOut={'slideOutRight'}
-                                                animationInTiming={1000}
-                                                animationOutTiming={1000}
-                                                backdropTransitionInTiming={1000}
-                                                backdropTransitionOutTiming={1000}
-                                                onBackdropPress={() => {
-                                                    setModalVisible(!modalVisible);
-                                                }}
-                                                onBackButtonPress={() => {
-                                                    setModalVisible(!modalVisible);
-                                                }}
-                                                isVisible={modalVisible}
-                                                backdropColor='#1e1e1e'>
-                                                <View>
-                                                    <Text>test</Text>
-                                                </View>
-                                            </Modal>
+                                        <Pressable key={index} style={styles.oneBox}>
                                             <View style={styles.roundContainer}>
                                                 <Text style={styles.roundText}>ROUND</Text>
                                                 <Text style={styles.roundNumber}>{item?.round}</Text>
@@ -94,7 +71,7 @@ const ScheduleRacesUpcomingScreen = () => {
     )
 }
 
-export default ScheduleRacesUpcomingScreen;
+export default ScheduleRacesPastScreen;
 
 const styles = StyleSheet.create({
     oneBox:{
@@ -120,6 +97,7 @@ const styles = StyleSheet.create({
     roundNumber:{
         fontWeight: 'bold',
         fontSize: 20,
+        color: '#1e1e1e',
     },
     bar:{
         width: 1,
@@ -162,5 +140,5 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         fontSize: 10,
         fontWeight: '900',
-    }
+    },
 })

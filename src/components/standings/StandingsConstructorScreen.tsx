@@ -40,47 +40,47 @@ const StandingsConstructorScreen = () => {
                                 switch (item?.Constructor?.constructorId) {
                                     case 'red_bull':
                                         color = '#3671C6';
-                                        image = require('../../assets/teamsLogo/redbull.jpeg');;
+                                        image = require('../../../assets/teamsLogo/redbull.jpeg');;
                                         break;
                                     case 'ferrari':
                                         color = '#F91536';
-                                        image = require('../../assets/teamsLogo/ferrari.jpeg');
+                                        image = require('../../../assets/teamsLogo/ferrari.jpeg');
                                         break;
                                     case 'mercedes':
                                         color = '#6CD3BF';
-                                        image = require('../../assets/teamsLogo/mercedes.jpeg');
+                                        image = require('../../../assets/teamsLogo/mercedes.jpeg');
                                         break;
                                     case 'aston_martin':
                                         color = '#358C75';
-                                        image = require('../../assets/teamsLogo/aston-martin.jpeg');
+                                        image = require('../../../assets/teamsLogo/aston-martin.jpeg');
                                         break;
                                     case 'alpine':
                                         color = '#2293D1';
-                                        image = require('../../assets/teamsLogo/alpine.jpg');
+                                        image = require('../../../assets/teamsLogo/alpine.jpg');
                                         break;
                                     case 'mclaren':
                                         color = '#F58020';
-                                        image = require('../../assets/teamsLogo/mclaren.jpg');
+                                        image = require('../../../assets/teamsLogo/mclaren.jpg');
                                         break;
                                     case 'williams':
                                         color = '#37BEDD';
-                                        image = require('../../assets/teamsLogo/williams.jpg');
+                                        image = require('../../../assets/teamsLogo/williams.jpg');
                                         break;
                                     case 'haas':
                                         color = '#B6BABD';
-                                        image = require('../../assets/teamsLogo/haas.jpg');
+                                        image = require('../../../assets/teamsLogo/haas.jpg');
                                         break;
                                     case 'alfa':
                                         color = '#C92D4B';
-                                        image = require('../../assets/teamsLogo/alfa-romeo.jpg');
+                                        image = require('../../../assets/teamsLogo/alfa-romeo.jpg');
                                         break;
                                     case 'alphatauri':
                                         color = '#5E8FAA';
-                                        image = require('../../assets/teamsLogo/alphatauri.jpg');
+                                        image = require('../../../assets/teamsLogo/alphatauri.jpg');
                                         break;
                                     default:
                                         color = 'black';
-                                        image = require('../../assets/teamsLogo/redbull.jpeg');
+                                        image = require('../../../assets/teamsLogo/redbull.jpeg');
                                         break;
                                 }
                                 return (

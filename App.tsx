@@ -5,10 +5,10 @@ import { NavigationContainer } from '@react-navigation/native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import StandingsScreen from './src/components/StandingsScreen';
-import ScheduleRacesScreen from './src/components/ScheduleRacesScreen';
+import StandingsScreen from './src/components/standings/StandingsScreen';
+import ScheduleRacesScreen from './src/components/scheduleRaces/ScheduleRacesScreen';
 import HomeScreen from './src/components/HomeScreen';
-import HistoryScreen from './src/components/HistoryScreen';
+import HistoryScreen from './src/components/historyChampions/HistoryScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -54,8 +54,8 @@ const App = () => {
                     },
                   })}
             >
-                <Tab.Screen name='HOME' component={HomeScreen} />
                 <Tab.Screen name='SCHEDULE' component={ScheduleRacesScreen} />
+                <Tab.Screen name='HOME' component={HomeScreen} />
                 <Tab.Screen name='STANDINGS' component={StandingsScreen} />
                 <Tab.Screen name='HISTORY' component={HistoryScreen} />
             </Tab.Navigator>

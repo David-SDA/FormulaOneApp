@@ -1,8 +1,8 @@
 import { StyleSheet } from 'react-native';
 import React from 'react';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import HistoryDriversChampions from './historyChampions/historyDriversChampions/HistoryDriversChampionsScreen';
-import HistoryConstructorChampionsScreen from './historyChampions/historyConstructorsChampions/HistoryConstructorChampionsScreen';
+import HistoryDriversChampions from './historyDriversChampions/HistoryDriversChampionsScreen';
+import HistoryConstructorChampionsScreen from './historyConstructorsChampions/HistoryConstructorChampionsScreen';
 
 const Tab = createMaterialTopTabNavigator();
 

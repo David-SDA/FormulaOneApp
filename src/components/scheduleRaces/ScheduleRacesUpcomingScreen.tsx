@@ -1,10 +1,12 @@
 import { ActivityIndicator, Image, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import React, { useEffect, useState } from 'react';
-import { flags } from '../../constants/flags';
+import Modal from 'react-native-modal';
+import { flags } from '../../../constants/flags';
 
-const ScheduleRacesPastScreen = () => {
+const ScheduleRacesUpcomingScreen = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [scheduleRaces, setScheduleRaces] = useState([]);
+    const [modalVisible, setModalVisible] = useState(false);
 
     const getData = async () => {
         const url = 'http://ergast.com/api/f1/current.json';
@@ -35,13 +37,28 @@ const ScheduleRacesPastScreen = () => {
                 ):(
                     <ScrollView contentContainerStyle={{paddingHorizontal: 10}}>
                         {
-                            scheduleRaces.reverse().map((item, index) => {
+                            scheduleRaces.map((item, index) => {
                                 let dateDebut = new Date(item?.FirstPractice?.date);
                                 let dateFin = new Date(item?.date);
 
-                                if(dateFin < new Date()){
+                                if(dateFin >= new Date()){
                                     return (
-                                        <Pressable key={index} style={styles.oneBox}>
+                                        <Pressable key={index} style={styles.oneBox} onPress={() => {
+                                            setModalVisible(true);
+                                        }}>
+                                            <Modal
+                                                animationIn={'fadeIn'}
+                                                animationOut={'fadeOut'}
+                                                hideModalContentWhileAnimating
+                                                onBackButtonPress={() => {
+                                                    setModalVisible(!modalVisible);
+                                                }}
+                                                isVisible={modalVisible}
+                                                >
+                                                <View style={{backgroundColor: 'white'}}>
+                                                    <Text>test</Text>
+                                                </View>
+                                            </Modal>
                                             <View style={styles.roundContainer}>
                                                 <Text style={styles.roundText}>ROUND</Text>
                                                 <Text style={styles.roundNumber}>{item?.round}</Text>
@@ -71,7 +88,7 @@ const ScheduleRacesPastScreen = () => {
     )
 }
 
-export default ScheduleRacesPastScreen;
+export default ScheduleRacesUpcomingScreen;
 
 const styles = StyleSheet.create({
     oneBox:{
@@ -97,7 +114,6 @@ const styles = StyleSheet.create({
     roundNumber:{
         fontWeight: 'bold',
         fontSize: 20,
-        color: '#1e1e1e',
     },
     bar:{
         width: 1,
@@ -140,5 +156,5 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         fontSize: 10,
         fontWeight: '900',
-    },
+    }
 })
