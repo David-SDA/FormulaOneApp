@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import Modal from 'react-native-modal';
 
 import { flags } from '../../../constants/flags';
-import ModalRace from '../ModalRace';
+import ModalRace from '../modalRace/ModalRace';
 
 
 const ScheduleRacesUpcomingScreen = () => {
@@ -29,7 +29,6 @@ const ScheduleRacesUpcomingScreen = () => {
             const response = await fetch(url);
             const json = await response.json();
             setScheduleRaces(json.MRData.RaceTable.Races);
-            // console.log(scheduleRaces);
         }catch(error){
             console.log(error);
         }finally{
@@ -54,12 +53,14 @@ const ScheduleRacesUpcomingScreen = () => {
                             animationIn={'fadeIn'}
                             animationOut={'fadeOut'}
                             hideModalContentWhileAnimating
+                            
                             onBackButtonPress={() => {
                                 closeModal();
                             }}
                             isVisible={modalVisible}
+                            style={styles.modal}
                         >
-                            <ModalRace round={selectedRace?.round} />
+                            <ModalRace round={selectedRace?.round} trackId={selectedRace?.Races?.Circuit?.circuitId} />
                         </Modal>
                         {
                             scheduleRaces.map((item, index) => {
@@ -103,6 +104,9 @@ const ScheduleRacesUpcomingScreen = () => {
 export default ScheduleRacesUpcomingScreen;
 
 const styles = StyleSheet.create({
+    modal:{
+        margin: 0,
+    },
     oneBox:{
         backgroundColor: '#ffffff',
         flexDirection: 'row',

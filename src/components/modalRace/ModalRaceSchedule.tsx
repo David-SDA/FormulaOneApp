@@ -1,13 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { Image, StatusBar, View, Text, StyleSheet, ActivityIndicator, ScrollView } from 'react-native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { NavigationContainer } from '@react-navigation/native';
+import { Image, View, Text, StyleSheet, ActivityIndicator, ScrollView } from 'react-native';
 import { Shadow } from 'react-native-shadow-2';
-import { flags } from '../../constants/flags';
+import { flags } from '../../../constants/flags';
 
-const Tab = createBottomTabNavigator();
-
-const ModalRace = ({round}) => {
+const ModalRaceSchedule = ({round}) => {
     const [isLoading, setIsLoading] = useState(true);
     const [race, setRace] = useState([]);
 
@@ -211,7 +207,7 @@ const ModalRace = ({round}) => {
     )
 }
 
-export default ModalRace;
+export default ModalRaceSchedule;
 
 const styles = StyleSheet.create({
     titleHome:{
@@ -236,6 +232,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         width: '95%',
         marginVertical: 5,
+        padding: 5,
         borderBottomColor: 'gray',
         borderBottomWidth: 1,
     },
