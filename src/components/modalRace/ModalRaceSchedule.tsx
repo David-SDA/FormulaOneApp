@@ -228,11 +228,10 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-around',
         alignItems: 'center',
-        width: '95%',
-        marginVertical: 5,
+        width: '100%',
+        marginBottom: 5,
         padding: 5,
-        borderBottomColor: 'gray',
-        borderBottomWidth: 1,
+        backgroundColor: '#ff1801',
     },
     flag:{
         height: 40,
@@ -246,7 +245,7 @@ const styles = StyleSheet.create({
         fontWeight: '900',
         fontSize: 20,
         width: '80%',
-        color: '#1e1e1e',
+        color: '#ffffff',
     },
     scheduleTitleText:{
         fontWeight: '900',
