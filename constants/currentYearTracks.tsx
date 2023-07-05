@@ -1,4 +1,15 @@
 export const currentYearTracks = {
     'silverstone': require('../assets/currentYearTracks/silverstone.png'),
-    
+    'hungaroring': require('../assets/currentYearTracks/hungaroring.png'),
+    'spa': require('../assets/currentYearTracks/spa.png'),
+    'zandvoort': require('../assets/currentYearTracks/zandvoort.png'),
+    'monza': require('../assets/currentYearTracks/monza.png'),
+    'marina_bay': require('../assets/currentYearTracks/marina_bay.png'),
+    'suzuka': require('../assets/currentYearTracks/suzuka.png'),
+    'losail': require('../assets/currentYearTracks/losail.png'),
+    'americas': require('../assets/currentYearTracks/americas.png'),
+    'rodriguez': require('../assets/currentYearTracks/rodriguez.png'),
+    'interlagos': require('../assets/currentYearTracks/interlagos.png'),
+    'vegas': require('../assets/currentYearTracks/vegas.png'),
+    'yas_marina': require('../assets/currentYearTracks/yas_marina.png'),
 }
