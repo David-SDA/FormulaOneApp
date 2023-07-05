@@ -1,7 +1,8 @@
 import React from 'react';
-import { ScrollView, StatusBar, StyleSheet } from 'react-native';
+import { ScrollView, StyleSheet } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import ModalRaceSchedule from './ModalRaceSchedule';
+import ModalRaceInfo from './ModalRaceInfo';
 
 const Tab = createBottomTabNavigator();
 
@@ -9,6 +10,7 @@ const ModalRace = ({round, trackId}) => {
     return (
         <ScrollView>
             <ModalRaceSchedule round={round} />
+            <ModalRaceInfo trackId={trackId} />
         </ScrollView>
     )
 }

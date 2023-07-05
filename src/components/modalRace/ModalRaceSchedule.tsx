@@ -26,14 +26,14 @@ const ModalRaceSchedule = ({round}) => {
     }, []);
 
     return (
-        <View style={{flex: 1, backgroundColor: '#1e1e1e'}}>
+        <View>
             {
                 isLoading? (
                     <View style={{flex: 1, flexDirection:'column', justifyContent: 'center'}}>
                         <ActivityIndicator size={'large'} color={'#ff1801'} />
                     </View>
                 ):(
-                    <ScrollView contentContainerStyle={{paddingHorizontal: 10}}>
+                    <View>
                         {
                             race.map((item, index) => {
                                 let dateFP1 = new Date(item?.FirstPractice?.date + 'T' + item?.FirstPractice?.time);
@@ -199,7 +199,7 @@ const ModalRaceSchedule = ({round}) => {
                                 }
                             })
                         }
-                    </ScrollView>
+                    </View>
                 )
             }
     </View>
@@ -223,8 +223,6 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'space-around',
-        marginVertical: 5,
-        borderRadius: 10,
     },
     roundContainer:{
         flexDirection: 'row',

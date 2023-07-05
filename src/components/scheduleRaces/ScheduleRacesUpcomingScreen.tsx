@@ -60,7 +60,7 @@ const ScheduleRacesUpcomingScreen = () => {
                             isVisible={modalVisible}
                             style={styles.modal}
                         >
-                            <ModalRace round={selectedRace?.round} trackId={selectedRace?.Races?.Circuit?.circuitId} />
+                            <ModalRace round={selectedRace?.round} trackId={selectedRace?.Circuit?.circuitId} />
                         </Modal>
                         {
                             scheduleRaces.map((item, index) => {
