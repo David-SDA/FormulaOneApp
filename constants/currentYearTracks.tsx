@@ -1,4 +1,13 @@
 export const currentYearTracks = {
+    'bahrain': require('../assets/currentYearTracks/bahrain.png'),
+    'jeddah': require('../assets/currentYearTracks/jeddah.png'),
+    'albert_park': require('../assets/currentYearTracks/albert_park.png'),
+    'baku': require('../assets/currentYearTracks/baku.png'),
+    'miami': require('../assets/currentYearTracks/miami.png'),
+    'monaco': require('../assets/currentYearTracks/monaco.png'),
+    'catalunya': require('../assets/currentYearTracks/catalunya.png'),
+    'villeneuve': require('../assets/currentYearTracks/villeneuve.png'),
+    'red_bull_ring': require('../assets/currentYearTracks/red_bull_ring.png'),
     'silverstone': require('../assets/currentYearTracks/silverstone.png'),
     'hungaroring': require('../assets/currentYearTracks/hungaroring.png'),
     'spa': require('../assets/currentYearTracks/spa.png'),
