@@ -1,11 +1,27 @@
 import React, { useEffect, useState } from 'react';
-import { Image, View, Text, StyleSheet, ActivityIndicator, ScrollView } from 'react-native';
+import { Image, View, Text, StyleSheet, ActivityIndicator, ScrollView, Pressable } from 'react-native';
 import { Shadow } from 'react-native-shadow-2';
+import Modal from 'react-native-modal';
+
 import { flags } from '../../../constants/flags';
+import ModalSessionResult from './ModalSessionResult';
 
 const ModalRaceSchedule = ({round}) => {
     const [isLoading, setIsLoading] = useState(true);
     const [race, setRace] = useState([]);
+    const [modalVisible, setModalVisible] = useState(false);
+    const [session, setSession] = useState(null);
+
+    const openModal = (session: any) => {
+        setSession(session);
+        setModalVisible(true);
+    }
+
+    const closeModal = () => {
+        setSession(null);
+        setModalVisible(false);
+    }
+
 
     const getData = async () => {
         const url = 'http://ergast.com/api/f1/current/' + round + '.json';
@@ -34,6 +50,19 @@ const ModalRaceSchedule = ({round}) => {
                     </View>
                 ):(
                     <View>
+                        <Modal
+                            animationIn={'fadeIn'}
+                            animationOut={'fadeOut'}
+                            hideModalContentWhileAnimating
+                            
+                            onBackButtonPress={() => {
+                                closeModal();
+                            }}
+                            isVisible={modalVisible}
+                            style={styles.modal}
+                        >
+                            <ModalSessionResult round={round} session={session} />
+                        </Modal>
                         {
                             race.map((item, index) => {
                                 let dateFP1 = new Date(item?.FirstPractice?.date + 'T' + item?.FirstPractice?.time);
@@ -62,6 +91,16 @@ const ModalRaceSchedule = ({round}) => {
                                                         <Text style={styles.sessionTitle}>RACE</Text>
                                                         <Text style={styles.sessionHour}>{dateRace.toLocaleTimeString('en-GB', {hour: '2-digit', minute: '2-digit'})}</Text>
                                                     </View>
+                                                    {
+                                                        (dateRace < new Date()) ? (
+                                                            <Pressable style={styles.results} onPress={() => {
+                                                                openModal('results');
+                                                            }}>
+                                                                <Text style={styles.resultsText}>RESULTS {'>'}</Text>
+                                                            </Pressable>
+
+                                                        ):('')
+                                                    }
                                                 </Shadow>
                                             </View>
                                             <View style={styles.sessionBox}>
@@ -140,6 +179,16 @@ const ModalRaceSchedule = ({round}) => {
                                                         <Text style={styles.sessionTitle}>RACE</Text>
                                                         <Text style={styles.sessionHour}>{dateRace.toLocaleTimeString('en-GB', {hour: '2-digit', minute: '2-digit'})}</Text>
                                                     </View>
+                                                    {
+                                                        (dateRace < new Date()) ? (
+                                                            <Pressable style={styles.results} onPress={() => {
+                                                                openModal('results');
+                                                            }}>
+                                                                <Text style={styles.resultsText}>RESULTS {'>'}</Text>
+                                                            </Pressable>
+
+                                                        ):('')
+                                                    }
                                                 </Shadow>
                                             </View>
                                             <View style={styles.sessionBox}>
@@ -210,6 +259,9 @@ const ModalRaceSchedule = ({round}) => {
 export default ModalRaceSchedule;
 
 const styles = StyleSheet.create({
+    modal:{
+        margin: 0,
+    },
     titleHome:{
         color: '#ffffff',
         fontSize: 20,
@@ -297,7 +349,7 @@ const styles = StyleSheet.create({
         marginLeft: 10,
         height: 50,
         flexDirection: 'column',
-        justifyContent: 'space-around'
+        justifyContent: 'space-around',
     },
     sessionTitle:{
         color: '#71797E',
@@ -307,5 +359,18 @@ const styles = StyleSheet.create({
     sessionHour:{
         fontWeight: '600',
         color: '#1e1e1e',
+    },
+    results:{
+        marginLeft: 'auto',
+        marginRight: 10,
+        backgroundColor: '#ff1801',
+        padding: 5,
+        borderRadius: 100,
+    },
+    resultsText:{
+        color: '#ffffff',
+        fontSize: 14,
+        fontWeight: '900',
+        letterSpacing: 0.5,
     },
 })
