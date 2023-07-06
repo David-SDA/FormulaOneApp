@@ -202,6 +202,16 @@ const ModalRaceSchedule = ({round}) => {
                                                         <Text style={styles.sessionTitle}>SPRINT</Text>
                                                         <Text style={styles.sessionHour}>{dateSprint.toLocaleTimeString('en-GB', {hour: '2-digit', minute: '2-digit'})}</Text>
                                                     </View>
+                                                    {
+                                                        (dateRace < new Date()) ? (
+                                                            <Pressable style={styles.results} onPress={() => {
+                                                                openModal('sprint');
+                                                            }}>
+                                                                <Text style={styles.resultsText}>RESULTS {'>'}</Text>
+                                                            </Pressable>
+
+                                                        ):('')
+                                                    }
                                                 </Shadow>
                                             </View>
                                             <View style={styles.sessionBox}>

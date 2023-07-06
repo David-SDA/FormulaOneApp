@@ -12,7 +12,12 @@ const ModalSessionResult = ({round, session}) => {
         try{
             const response = await fetch(url);
             const json = await response.json();
-            setResults(json.MRData.RaceTable.Races[0].Results);
+            if(session === 'results'){
+                setResults(json.MRData.RaceTable.Races[0].Results);
+            }
+            else if(session === 'sprint'){
+                setResults(json.MRData.RaceTable.Races[0].SprintResults);
+            }
         }catch(error){
             console.log(error);
         }finally{
