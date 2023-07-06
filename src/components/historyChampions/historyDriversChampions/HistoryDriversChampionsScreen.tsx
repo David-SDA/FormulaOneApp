@@ -1,25 +1,16 @@
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import React from 'react';
-import DriversChampions1950s from './DriversChampions1950s';
-import DriversChampions1960s from './DriversChampions1960s';
-import DriversChampions1970s from './DriversChampions1970s';
-import DriversChampions1980s from './DriversChampions1980s';
-import DriversChampions1990s from './DriversChampions1990s';
-import DriversChampions2000s from './DriversChampions2000s';
-import DriversChampions2010s from './DriversChampions2010s';
-import DriversChampions2020s from './DriversChampions2020s';
+
+import DriversChampions2010s2020s2030s from './DriversChampions2010s2020s2030s';
+import DriversChampions1980s1990s2000s from './DriversChampions1980s1990s2000s';
+import DriversChampions1950s1960s1970s from './DriversChampions1950s1960s1970s';
 
 const HistoryDriversChampions = () => {
     return (
         <ScrollView style={styles.container}>
-            <DriversChampions2020s />
-            <DriversChampions2010s />
-            <DriversChampions2000s />
-            <DriversChampions1990s />
-            <DriversChampions1980s />
-            <DriversChampions1970s />
-            <DriversChampions1960s />
-            <DriversChampions1950s />
+            <DriversChampions2010s2020s2030s />
+            <DriversChampions1980s1990s2000s />
+            <DriversChampions1950s1960s1970s />
         </ScrollView>
   )
 }
