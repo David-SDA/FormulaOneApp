@@ -114,6 +114,16 @@ const ModalRaceSchedule = ({round}) => {
                                                         <Text style={styles.sessionTitle}>QUALIFYING</Text>
                                                         <Text style={styles.sessionHour}>{dateQuali.toLocaleTimeString('en-GB', {hour: '2-digit', minute: '2-digit'})}</Text>
                                                     </View>
+                                                    {
+                                                        (dateRace < new Date()) ? (
+                                                            <Pressable style={styles.results} onPress={() => {
+                                                                openModal('qualifying');
+                                                            }}>
+                                                                <Text style={styles.resultsText}>RESULTS {'>'}</Text>
+                                                            </Pressable>
+
+                                                        ):('')
+                                                    }
                                                 </Shadow>
                                             </View>
                                             <View style={styles.sessionBox}>
@@ -238,6 +248,16 @@ const ModalRaceSchedule = ({round}) => {
                                                         <Text style={styles.sessionTitle}>QUALIFYING</Text>
                                                         <Text style={styles.sessionHour}>{dateQuali.toLocaleTimeString('en-GB', {hour: '2-digit', minute: '2-digit'})}</Text>
                                                     </View>
+                                                    {
+                                                        (dateRace < new Date()) ? (
+                                                            <Pressable style={styles.results} onPress={() => {
+                                                                openModal('qualifying');
+                                                            }}>
+                                                                <Text style={styles.resultsText}>RESULTS {'>'}</Text>
+                                                            </Pressable>
+
+                                                        ):('')
+                                                    }
                                                 </Shadow>
                                             </View>
                                             <View style={styles.sessionBox}>

@@ -18,6 +18,9 @@ const ModalSessionResult = ({round, session}) => {
             else if(session === 'sprint'){
                 setResults(json.MRData.RaceTable.Races[0].SprintResults);
             }
+            else if(session === 'qualifying'){
+                setResults(json.MRData.RaceTable.Races[0].QualifyingResults);
+            }
         }catch(error){
             console.log(error);
         }finally{
@@ -46,27 +49,55 @@ const ModalSessionResult = ({round, session}) => {
                                     (session === 'sprint') ? 'SPRINT RESULTS' : ''}
                                 </Text>
                             </View>
-                            <View style={styles.lineInfoBar}>
-                                <Text style={[styles.lineInfoText, {width: '10%', textAlign: 'center'}]}>POS</Text>
-                                <Text style={[styles.lineInfoText, {width: '15%', textAlign: 'center'}]}>DRIVER</Text>
-                                <Text style={[styles.lineInfoText, {width: '28%', textAlign: 'center'}]}>TIME/RETIRED</Text>
-                                <Text style={[styles.lineInfoText, {width: '26%', textAlign: 'center'}]}>FASTEST LAP</Text>
-                                <Text style={[styles.lineInfoText, {width: '8%', textAlign: 'center'}]}>PTS</Text>
-                            </View>
+                            {
+                                session === 'qualifying' ? (
+                                    <View style={styles.lineInfoBar}>
+                                        <Text style={[styles.lineInfoText, {width: '10%', textAlign: 'center'}]}>POS</Text>
+                                        <Text style={[styles.lineInfoText, {width: '15%', textAlign: 'center'}]}>DRIVER</Text>
+                                        <Text style={[styles.lineInfoText, {width: '20%', textAlign: 'center'}]}>Q1</Text>
+                                        <Text style={[styles.lineInfoText, {width: '20%', textAlign: 'center'}]}>Q2</Text>
+                                        <Text style={[styles.lineInfoText, {width: '20%', textAlign: 'center'}]}>Q3</Text>
+                                    </View>
+                                ):(
+                                    <View style={styles.lineInfoBar}>
+                                        <Text style={[styles.lineInfoText, {width: '10%', textAlign: 'center'}]}>POS</Text>
+                                        <Text style={[styles.lineInfoText, {width: '15%', textAlign: 'center'}]}>DRIVER</Text>
+                                        <Text style={[styles.lineInfoText, {width: '28%', textAlign: 'center'}]}>TIME/RETIRED</Text>
+                                        <Text style={[styles.lineInfoText, {width: '26%', textAlign: 'center'}]}>FASTEST LAP</Text>
+                                        <Text style={[styles.lineInfoText, {width: '8%', textAlign: 'center'}]}>PTS</Text>
+                                    </View>
+                                )
+                            }
                             {
                                 results.map((item, index) => {
-                                    return (
-                                        <View key={index} style={styles.container}>
-                                            <Text style={styles.position}>{item?.positionText}</Text>
-                                            <View style={styles.barCode}>
-                                                <View style={[styles.teamColorBar, {backgroundColor: currentConstructorColor[item?.Constructor?.constructorId]}]}></View>
-                                                <Text style={styles.code}>  {item?.Driver?.code}</Text>
+                                    if(session === 'qualifying'){
+                                        return (
+                                            <View key={index} style={styles.container}>
+                                                <Text style={styles.position}>{item?.position}</Text>
+                                                <View style={styles.barCode}>
+                                                    <View style={[styles.teamColorBar, {backgroundColor: currentConstructorColor[item?.Constructor?.constructorId]}]}></View>
+                                                    <Text style={styles.code}>  {item?.Driver?.code}</Text>
+                                                </View>
+                                                <Text style={[styles.time, {width: '20%'}]}>{item?.Q1 === '' ? '--:--:---' : item?.Q1}</Text>
+                                                <Text style={[styles.time, {width: '20%'}]}>{(item?.Q2) ? item?.Q2 : '--:--:---'}</Text>
+                                                <Text style={[styles.time, {width: '20%'}]}>{(item?.Q3) ? item?.Q3 : '--:--:---'}</Text>
                                             </View>
-                                            <Text style={styles.time}>{(item?.Time?.time) ? item?.Time.time : item?.status}</Text>
-                                            <Text style={item?.FastestLap?.rank === "1" ? styles.fastestLap1 : styles.fastestLap}>{item?.FastestLap?.Time?.time}</Text>
-                                            <Text style={styles.points}>{item?.points}</Text>
-                                        </View>
-                                    )
+                                        )
+                                    }
+                                    else{
+                                        return (
+                                            <View key={index} style={styles.container}>
+                                                <Text style={styles.position}>{item?.positionText}</Text>
+                                                <View style={styles.barCode}>
+                                                    <View style={[styles.teamColorBar, {backgroundColor: currentConstructorColor[item?.Constructor?.constructorId]}]}></View>
+                                                    <Text style={styles.code}>  {item?.Driver?.code}</Text>
+                                                </View>
+                                                <Text style={styles.time}>{(item?.Time?.time) ? item?.Time.time : item?.status}</Text>
+                                                <Text style={item?.FastestLap?.rank === "1" ? styles.fastestLap1 : styles.fastestLap}>{item?.FastestLap?.Time?.time}</Text>
+                                                <Text style={styles.points}>{item?.points}</Text>
+                                            </View>
+                                        )
+                                    }
                                 })
                             }
                         </View>
