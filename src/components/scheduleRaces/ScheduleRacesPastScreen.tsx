@@ -1,10 +1,25 @@
 import { ActivityIndicator, Image, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import React, { useEffect, useState } from 'react';
+import Modal from 'react-native-modal';
+
 import { flags } from '../../../constants/flags';
+import ModalRace from '../modalRace/ModalRace';
 
 const ScheduleRacesPastScreen = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [scheduleRaces, setScheduleRaces] = useState([]);
+    const [modalVisible, setModalVisible] = useState(false);
+    const [selectedRace, setSelectedRace] = useState(null);
+
+    const openModal = (race: any) => {
+        setSelectedRace(race);
+        setModalVisible(true);
+    }
+
+    const closeModal = () => {
+        setSelectedRace(null);
+        setModalVisible(false);
+    }
 
     const getData = async () => {
         const url = 'http://ergast.com/api/f1/current.json';
@@ -13,7 +28,6 @@ const ScheduleRacesPastScreen = () => {
             const response = await fetch(url);
             const json = await response.json();
             setScheduleRaces(json.MRData.RaceTable.Races);
-            // console.log(scheduleRaces);
         }catch(error){
             console.log(error);
         }finally{
@@ -34,6 +48,19 @@ const ScheduleRacesPastScreen = () => {
                     </View>
                 ):(
                     <ScrollView contentContainerStyle={{paddingHorizontal: 10}}>
+                        <Modal
+                            animationIn={'fadeIn'}
+                            animationOut={'fadeOut'}
+                            hideModalContentWhileAnimating
+                            
+                            onBackButtonPress={() => {
+                                closeModal();
+                            }}
+                            isVisible={modalVisible}
+                            style={styles.modal}
+                        >
+                            <ModalRace round={selectedRace?.round} trackId={selectedRace?.Circuit?.circuitId} />
+                        </Modal>
                         {
                             scheduleRaces.reverse().map((item, index) => {
                                 let dateDebut = new Date(item?.FirstPractice?.date);
@@ -41,7 +68,9 @@ const ScheduleRacesPastScreen = () => {
 
                                 if(dateFin < new Date()){
                                     return (
-                                        <Pressable key={index} style={styles.oneBox}>
+                                        <Pressable key={index} style={styles.oneBox} onPress={() => {
+                                            openModal(item);
+                                        }}>
                                             <View style={styles.roundContainer}>
                                                 <Text style={styles.roundText}>ROUND</Text>
                                                 <Text style={styles.roundNumber}>{item?.round}</Text>
@@ -74,6 +103,9 @@ const ScheduleRacesPastScreen = () => {
 export default ScheduleRacesPastScreen;
 
 const styles = StyleSheet.create({
+    modal:{
+        margin: 0,
+    },
     oneBox:{
         backgroundColor: '#ffffff',
         flexDirection: 'row',

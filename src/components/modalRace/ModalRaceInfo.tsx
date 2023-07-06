@@ -36,14 +36,21 @@ const ModalRaceInfo = ({trackId}) => {
 						<View style={styles.boxContainer}>
 							<View style={styles.boxInfo}>
 								<Text style={styles.boxInfoTitleText}>Country</Text>
-								<Text style={styles.boxInfoData}>{track?.Location?.country}</Text>
+								<Text style={styles.boxInfoData}>{track?.Location?.country === 'United States' ? 'USA' : track?.Location?.country}</Text>
+								<Text />
 							</View>
 							<View style={styles.boxInfo}>
 								<Text style={styles.boxInfoTitleText}>Locality</Text>
 								<Text style={styles.boxInfoData}>{track?.Location?.locality}</Text>
+								<Text />
 							</View>
 						</View>
-						<Text style={[styles.infoTitleText, {marginTop: 10}]}>CIRCUIT</Text>
+						<View style={[styles.boxInfo, {width: '98%', height: 120}]}>
+							<Text style={styles.boxInfoTitleText}>Circuit name</Text>
+							<Text style={styles.boxInfoData}>{track?.circuitName}</Text>
+							<Text />
+						</View>
+						<Text style={[styles.infoTitleText, {marginTop: 10}]}>CIRCUIT MAP</Text>
 						<Image source={currentYearTracks[track?.circuitId]} style={styles.trackImage} />
 					</View>
 				)
@@ -79,8 +86,9 @@ const styles = StyleSheet.create({
 		borderBottomWidth: 10,
 		borderRadius: 10,
 		borderBottomEndRadius: 30,
-		width: '45%',
+		width: '47%',
 		height: 100,
+		justifyContent: 'space-between',
 	},
 	boxInfoTitleText:{
 		fontStyle: 'italic',

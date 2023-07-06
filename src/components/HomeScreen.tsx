@@ -45,7 +45,7 @@ const HomeScreen = () => {
                                 let dateQuali = new Date(item?.Qualifying.date + 'T' + item?.Qualifying.time);
                                 let dateRace = new Date(item?.date + 'T' + item?.time);
 
-                                if(dateRace >= new Date() && item?.ThirdPractice){
+                                if(item?.ThirdPractice){
                                     let dateFP3 = new Date(item?.ThirdPractice?.date + 'T' + item?.ThirdPractice?.time);
 
                                     return (
