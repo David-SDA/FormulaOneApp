@@ -54,10 +54,10 @@ const App = () => {
                     },
                   })}
             >
-                <Tab.Screen name='HISTORY' component={HistoryScreen} />
                 <Tab.Screen name='HOME' component={HomeScreen} />
                 <Tab.Screen name='SCHEDULE' component={ScheduleRacesScreen} />
                 <Tab.Screen name='STANDINGS' component={StandingsScreen} />
+                <Tab.Screen name='HISTORY' component={HistoryScreen} />
             </Tab.Navigator>
         </NavigationContainer>
     );

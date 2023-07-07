@@ -3,12 +3,12 @@ import React, { useEffect, useState } from 'react';
 import { flagsNationality } from '../../../../constants/flagsNationality';
 import { constructorsImages } from '../../../../constants/constructorImage';
 
-const ConstructorsChampions1988_2017 = () => {
+const ConstructorsChampions = () => {
   	const [isLoading, setIsLoading] = useState(true);
 	const [constructorsChampions, setConstructorsChampions] = useState([]);
 
 	const getData = async () => {
-		const url = 'http://ergast.com/api/f1/constructorStandings/1.json?limit=30&offset=30';
+		const url = 'http://ergast.com/api/f1/constructorStandings/1.json?limit=100';
 
 		try{
 			const response = await fetch(url);
@@ -59,7 +59,7 @@ const ConstructorsChampions1988_2017 = () => {
 	  )
 }
 
-export default ConstructorsChampions1988_2017;
+export default ConstructorsChampions;
 
 const styles = StyleSheet.create({
 	oneBox:{
