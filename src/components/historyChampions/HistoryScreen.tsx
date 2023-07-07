@@ -17,19 +17,19 @@ const HistoryScreen = () => {
                     tabBarActiveTintColor: '#ffffff',
                     tabBarLabelStyle:{
                         fontWeight: 'bold',
-                    },
+                        fontSize: 10,                    },
                     tabBarIndicatorStyle:{
                         backgroundColor: '#ffffff'
                     }
                 }}
             >
-                <Tab.Screen name='TRACKS' component={HistoryCircuits} />
                 <Tab.Screen name='DRIVERS' component={HistoryDriversChampions} />
                 <Tab.Screen name='CONSTRUCTORS' component={HistoryConstructorChampionsScreen} />
+                <Tab.Screen name='TRACKS' component={HistoryCircuits} />
             </Tab.Navigator>
       )
 }
 
-export default HistoryScreen
+export default HistoryScreen;
 
 const styles = StyleSheet.create({})
