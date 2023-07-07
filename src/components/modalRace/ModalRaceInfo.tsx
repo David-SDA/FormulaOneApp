@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
         fontStyle: 'italic',
         alignSelf: 'flex-start',
         marginLeft: '2.5%',
-        color: '#1e1e1e'
+        color: '#1e1e1e',
 	},
 	boxContainer:{
 		flexDirection: 'row',
