@@ -172,5 +172,5 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         fontSize: 10,
         fontWeight: '900',
-    }
+    },
 })
