@@ -29,7 +29,7 @@ export const flags = {
     'Switzerland': require('../assets/countryFlags/switzerland.jpg'),
     'Turkey': require('../assets/countryFlags/turkey.jpg'),
     'Korea': require('../assets/countryFlags/southkorea.png'),
-    'South Africa': require('../assets/countryFlags/southafrica.jpg'),
+    'South Africa': require('../assets/countryFlags/southAfrica.jpg'),
     'Sweden': require('../assets/countryFlags/sweden.jpg'),
     'Malaysia': require('../assets/countryFlags/malaysia.jpg'),
     'China': require('../assets/countryFlags/china.png'),
