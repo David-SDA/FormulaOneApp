@@ -1,10 +1,24 @@
-import { ActivityIndicator, Image, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { ActivityIndicator, Image, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { flags } from '../../../../constants/flags';
+import Modal from 'react-native-modal';
+import HistoryCircuitsModal from './HistoryCircuitsModal';
 
 const HistoryCircuits = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [circuits, setCircuits] = useState([]);
+    const [modalVisible, setModalVisible] = useState(false);
+    const [selectedCircuit, setSelectedCircuit] = useState(null);
+
+    const openModal = (circuit: any) => {
+        setSelectedCircuit(circuit);
+        setModalVisible(true);
+    }
+
+    const closeModal = () => {
+        setSelectedCircuit(null);
+        setModalVisible(false);
+    }
 
     const getData = async () => {
         const url = 'http://ergast.com/api/f1/circuits.json?limit=100';
@@ -41,13 +55,28 @@ const HistoryCircuits = () => {
                     </View>
                 ):(
                     <ScrollView contentContainerStyle={{paddingHorizontal: 10}}>
+                        <Modal
+                            animationIn={'fadeIn'}
+                            animationOut={'fadeOut'}
+                            hideModalContentWhileAnimating
+                            
+                            onBackButtonPress={() => {
+                                closeModal();
+                            }}
+                            isVisible={modalVisible}
+                            style={styles.modal}
+                        >
+                            <HistoryCircuitsModal circuitId={selectedCircuit?.circuitId} />
+                        </Modal>
                         {
                             circuits.map((item, index) => {
                                 return (
-                                    <View key={index} style={styles.oneBox}>
+                                    <Pressable key={index} style={styles.oneBox} onPress={() => {
+                                        openModal(item);
+                                    }}>
                                         <Image source={flags[item?.Location?.country]} style={styles.flag} />
                                         <Text style={styles.circuitName}>{item?.circuitName.toUpperCase()}</Text>
-                                    </View>
+                                    </Pressable>
                                 );
                             })
                         }
@@ -61,6 +90,9 @@ const HistoryCircuits = () => {
 export default HistoryCircuits;
 
 const styles = StyleSheet.create({
+    modal:{
+        margin: 0,
+    },
     oneBox:{
         backgroundColor: '#ffffff',
         flexDirection: 'row',
