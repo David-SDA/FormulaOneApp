@@ -28,3 +28,12 @@ Création d'une application mobile avec React Native sur la Formule 1. Les donn�
 | :-: | :-: |
 | <img src="https://github.com/David-SDA/FormulaOneApp/blob/master/images/calendrier/ecran_calendrier_resultat_qualif.png" width="200"> | <img src="https://github.com/David-SDA/FormulaOneApp/blob/master/images/calendrier/ecran_calendrier_resultat_course.png" width="200"> |
 </div>
+
+### Classement
+---
+<div align="center">
+  
+| Écran du classement pilotes | Écran du classement constructeurs |
+| :-: | :-: |
+| <img src="https://github.com/David-SDA/FormulaOneApp/blob/master/images/classement/ecran_classement_pilotes.png" width="200"> | <img src="https://github.com/David-SDA/FormulaOneApp/blob/master/images/classement/ecran_classement_constructeurs.png" width="200"> |
+</div>
