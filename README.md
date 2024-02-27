@@ -37,3 +37,19 @@ Création d'une application mobile avec React Native sur la Formule 1. Les donn�
 | :-: | :-: |
 | <img src="https://github.com/David-SDA/FormulaOneApp/blob/master/images/classement/ecran_classement_pilotes.png" width="200"> | <img src="https://github.com/David-SDA/FormulaOneApp/blob/master/images/classement/ecran_classement_constructeurs.png" width="200"> |
 </div>
+
+### Historique
+---
+<div align="center">
+  
+| Écran des pilotes champions | Écran des constructeurs champions |
+| :-: | :-: |
+| <img src="https://github.com/David-SDA/FormulaOneApp/blob/master/images/historique/ecran_historique_pilotes_champions.png" width="200"> | <img src="https://github.com/David-SDA/FormulaOneApp/blob/master/images/historique/ecran_historique_constructeurs_champions.png" width="200"> |
+</div>
+
+<div align="center">
+
+| Écran des circuits historiques | Écran d'un circuit historique |
+| :-: | :-: |
+| <img src="https://github.com/David-SDA/FormulaOneApp/blob/master/images/historique/ecran_historique_circuits.png" width="200"> | <img src="https://github.com/David-SDA/FormulaOneApp/blob/master/images/historique/ecran_historique_circuit.png" width="200"> |
+</div>
